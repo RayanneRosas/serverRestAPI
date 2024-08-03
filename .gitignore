@@ -1,7 +1,7 @@
-#.DS_Store
-# node_modules
-# cypress/videos/
-# package-lock.json
+.DS_Store
+ node_modules
+ cypress/videos/
+ package-lock.json
 steps:
 - name: Checkout
   uses: actions/checkout@v4
