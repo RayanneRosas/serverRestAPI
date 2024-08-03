@@ -14,8 +14,7 @@ jobs:
           # Disable running of tests within install job
           runTests: false
           build: npm install
-          start: npx cypress run
-
+          start: npm start
       - name: Save build folder
         uses: actions/upload-artifact@v4
         with:
@@ -48,4 +47,5 @@ jobs:
           parallel: true
           group: 'UI-Chrome'
           start: npm start
+          browser: chrome
   
