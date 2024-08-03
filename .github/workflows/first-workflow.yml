@@ -3,18 +3,19 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on: push
 jobs:
   install:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
+          node-version: '20'
+      - run: npm install -g bats
+      - run: bats -v
+        # with:
           # Disable running of tests within install job
-          runTests: false
-          build: npm install
-          start: npm start
+         # runTests: false
+         # build: npm install
+         # start: npm start
       - name: Save build folder
         uses: actions/upload-artifact@v4
         with:
